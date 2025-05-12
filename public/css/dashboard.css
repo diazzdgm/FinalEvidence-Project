@@ -1,36 +1,61 @@
 /* public/css/dashboard.css - More Interactive Enhancements & Button Styles */
 
-/* Dashboard specific container styling */
+/* Asegurar que el layout principal de la app ocupe toda la altura */
+/* Esto podría estar en app.css o style.css si es más general */
+body, html {
+    height: 100%;
+}
+/* Si x-app-layout tiene un div wrapper principal, también podría necesitar min-height: 100vh */
+
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra la tarjeta verticalmente si hay espacio */
+    align-items: center; /* Centra la tarjeta horizontalmente */
+    flex-grow: 1; /* Permite que el contenedor crezca para ocupar espacio */
+    width: 100%;
+    padding-top: 2rem; /* Ajusta según el header de x-app-layout */
+    padding-bottom: 2rem;
+}
+
 .dashboard-container .dashboard-card {
     background-color: #ffffff;
-    border: none;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
-    border-radius: 0.375rem; /* rounded-md */
+    border: none; /* Ya estaba */
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada y moderna */
+    border-radius: 0.75rem; /* rounded-xl, más suave */
+    width: 100%; /* Ocupa el ancho del contenedor max-w-7xl */
+    /* max-width: 60rem;  Puedes ajustar esto si quieres que la tarjeta sea más estrecha que max-w-7xl */
 }
 
 /* Dark mode for dashboard card */
 .dark .dashboard-container .dashboard-card {
-    background-color: #1a202c;
-    border-color: #2d3748;
+    background-color: #2d3748; /* Un poco más claro que el anterior para mejor contraste de elementos internos */
+    border-color: #4a5568;
 }
 
-/* Dashboard section headings - with a green accent */
+/* Dashboard section headings - con un estilo más prominente */
 .dashboard-heading {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #16a34a; /* Green accent */
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.075em;
-    padding-left: 0.25rem;
+    font-size: 1.5rem; /* Más grande */
+    font-weight: 700; /* Bold */
+    color: #1f2937; /* Color oscuro principal */
+    margin-bottom: 1.5rem; /* Más espacio debajo */
+    text-align: center; /* Centrar el título del dashboard */
+    /* text-transform: uppercase; Ya no es necesario, el tamaño y peso lo hacen destacar */
+    /* letter-spacing: 0.075em; */
+    /* padding-left: 0.25rem; */
 }
 
 /* Dark mode considerations for dashboard headings */
 .dark .dashboard-heading {
-    color: #4ade80; /* Lighter green for dark mode */
+    color: #e2e8f0; /* Color claro para dark mode */
 }
 
-/* Styling for links within the dashboard lists */
+/* Grid para los botones/enlaces de gestión */
+.dashboard-card .grid { /* Aplicado al div que contiene los botones */
+    padding-top: 1rem; /* Espacio arriba de los botones */
+}
+
+/* Styling for links within the dashboard lists (si se usan para otra cosa, si no, se puede eliminar) */
 .dashboard-links ul {
     list-style: none;
     padding: 0;
@@ -113,4 +138,19 @@
 
 .dark .btn-primary:hover {
     background-color: #2563eb; /* Tailwind blue-600 for dark mode hover */
+}
+
+/* Ajustes para que los botones ocupen todo el alto de su celda de grid y se vean uniformes */
+.dashboard-card .grid > div {
+    display: flex; /* Permite que el enlace (botón) se estire */
+}
+
+.btn-primary.w-full.text-center {
+    display: flex; /* Para centrar contenido dentro del botón si tuviera íconos, etc. */
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* Ocupa toda la altura de la celda del grid */
+    padding-top: 1rem; /* Más padding vertical para botones más altos */
+    padding-bottom: 1rem;
+    line-height: 1.25; /* Ajuste de altura de línea para texto centrado */
 }
