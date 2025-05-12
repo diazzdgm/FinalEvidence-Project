@@ -15,39 +15,39 @@
                             <!-- Botón para Gestión de Productos (Ejemplo) -->
                             <div>
                                 <a href="{{ route('product.index') }}" class="btn-primary w-full text-center">
-                                    Gestionar Productos
+                                    Manage Products
                                 </a>
                             </div>
 
                             <!-- Botones para las otras entidades -->
                             <div>
                                 <a href="{{ route('category.index') }}" class="btn-primary w-full text-center">
-                                    Gestionar Categorías
+                                    Manage Categories
                                 </a>
                             </div>
                             <div>
                                 <a href="{{ route('order.index') }}" class="btn-primary w-full text-center">
-                                    Gestionar Órdenes
+                                    Manage Orders
                                 </a>
                             </div>
                             <div>
                                 <a href="{{ route('customer.index') }}" class="btn-primary w-full text-center">
-                                    Gestionar Clientes
+                                    Manage Customers
                                 </a>
                             </div>
                             <div>
                                 <a href="{{ route('warehouse.index') }}" class="btn-primary w-full text-center">
-                                    Gestionar Almacenes
+                                    Manage Warehouses
                                 </a>
                             </div>
                             <div>
                                 <a href="{{ route('role.index') }}" class="btn-primary w-full text-center">
-                                    Gestionar Roles
+                                    Manage Roles
                                 </a>
                             </div>
                             <div>
                                 <a href="{{ route('im.index') }}" class="btn-primary w-full text-center">
-                                    Movimientos Inventario
+                                    Inventory Movements
                                 </a>
                             </div>
                         </div>
