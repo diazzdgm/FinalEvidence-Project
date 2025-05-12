@@ -64,9 +64,10 @@ class InventoryMovementController extends Controller
         return to_route('im.show', $IM->id);
     }
 
-    public function destroy (Product $product){
-        $product->delete();
-        return redirect()->route('im.index')->with('success',);
+    public function destroy (InventoryMovement $inventoryMovement){ // Cambiado a InventoryMovement
+        $inventoryMovement->delete();
+        return redirect()->route('im.index')
+                         ->with('success', 'Movimiento de inventario #'.$inventoryMovement->id.' eliminado exitosamente.');
     }
 
     

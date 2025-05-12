@@ -17,6 +17,13 @@ class Product extends Model
         'Warehouse',
         'Category_ID'
     ];
+
+    /**
+     * Get the inventory movements for the product.
+     */
+    public function inventoryMovements()
+    {
+        // Asumiendo que la clave foránea en la tabla 'inventory_movement' es 'Product_ID'
+        return $this->hasMany(InventoryMovement::class, 'Product_ID');
+    }
 }
-
-

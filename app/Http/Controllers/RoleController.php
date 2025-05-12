@@ -47,7 +47,17 @@ class RoleController extends Controller
     }
 
     public function destroy (Role $role){
+        // // Verificar si el rol tiene usuarios asociados
+        // // Comentado temporalmente porque la tabla pivote 'role_user' o la relación no está completamente definida/existente
+        // if (method_exists($role, 'users') && $role->users()->exists()) {
+        //     // Si tiene usuarios, redirigir con un mensaje de error
+        //     return redirect()->route('role.index')
+        //                      ->with('error', 'No se puede eliminar el rol "'.$role->Name.'" porque tiene usuarios asignados.');
+        // }
+
+        // Proceder con la eliminación (temporalmente sin verificación de usuarios)
         $role->delete();
-        return redirect()->route('role.index')->with('success',);
+        return redirect()->route('role.index')
+                         ->with('success', 'Rol "'.$role->Name.'" eliminado exitosamente.');
     }
 }

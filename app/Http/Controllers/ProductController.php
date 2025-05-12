@@ -67,8 +67,17 @@ class ProductController extends Controller
     }
 
     public function destroy (Product $product){
+        // Verificar si el producto tiene movimientos de inventario asociados
+        if ($product->inventoryMovements()->exists()) {
+            // Si tiene movimientos, redirigir con un mensaje de error
+            return redirect()->route('product.index')
+                             ->with('error', 'No se puede eliminar el producto "'.$product->Name.'" porque tiene movimientos de inventario asociados.');
+        }
+
+        // Si no tiene movimientos, proceder con la eliminación
         $product->delete();
-        return redirect()->route('product.index')->with('success',);
+        return redirect()->route('product.index')
+                         ->with('success', 'Producto "'.$product->Name.'" eliminado exitosamente.');
     }
 
     

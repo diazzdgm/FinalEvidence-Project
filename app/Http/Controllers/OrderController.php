@@ -60,8 +60,16 @@ class OrderController extends Controller
     }
 
     public function destroy (Order $order){
+        // Aquí podrías añadir verificaciones si Order tiene relaciones 'hasMany' que impidan su eliminación
+        // Por ejemplo, si una orden tiene 'order_items' y no se pueden eliminar órdenes con items.
+        // if ($order->orderItems()->exists()) {
+        //     return redirect()->route('order.index')
+        //                      ->with('error', 'No se puede eliminar la orden #'.$order->id.' porque tiene ítems asociados.');
+        // }
+
         $order->delete();
-        return redirect()->route('order.index')->with('success',);
+        return redirect()->route('order.index')
+                         ->with('success', 'Orden #'.$order->id.' eliminada exitosamente.');
     }
 
 

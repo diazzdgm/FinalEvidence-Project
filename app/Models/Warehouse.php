@@ -12,4 +12,13 @@ class Warehouse extends Model
     protected $fillable=[
         'Name'
     ];
+
+    /**
+     * Get the products for the warehouse.
+     */
+    public function products()
+    {
+        // La clave foránea en la tabla 'product' es 'Warehouse'
+        return $this->hasMany(Product::class, 'Warehouse');
+    }
 }

@@ -51,7 +51,16 @@ class CustomerController extends Controller
     }
 
     public function destroy (Customer $customer){
+        // Verificar si el cliente tiene órdenes asociadas
+        if ($customer->orders()->exists()) {
+            // Si tiene órdenes, redirigir con un mensaje de error
+            return redirect()->route('customer.index')
+                             ->with('error', 'No se puede eliminar el cliente "'.$customer->Name.'" porque tiene órdenes asociadas.');
+        }
+
+        // Si no tiene órdenes, proceder con la eliminación
         $customer->delete();
-        return redirect()->route('customer.index')->with('success',);
+        return redirect()->route('customer.index')
+                         ->with('success', 'Cliente "'.$customer->Name.'" eliminado exitosamente.');
     }
 }

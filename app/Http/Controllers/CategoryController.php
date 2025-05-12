@@ -44,7 +44,16 @@ class CategoryController extends Controller
     }
 
     public function destroy (Category $category){
+        // Verificar si la categoría tiene productos asociados
+        if ($category->products()->exists()) { // Usar exists() es más eficiente que count() > 0 si solo necesitas saber si hay alguno
+            // Si tiene productos, redirigir con un mensaje de error
+            return redirect()->route('category.index')
+                             ->with('error', 'No se puede eliminar la categoría "'.$category->Name.'" porque tiene productos asociados.');
+        }
+
+        // Si no tiene productos, proceder con la eliminación
         $category->delete();
-        return redirect()->route('category.index')->with('success',);
+        return redirect()->route('category.index')
+                         ->with('success', 'Categoría "'.$category->Name.'" eliminada exitosamente.');
     }
 }

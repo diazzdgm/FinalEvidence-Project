@@ -43,7 +43,16 @@ class WarehouseController extends Controller
     }
 
     public function destroy (Warehouse $warehouse){
+        // Verificar si el almacén tiene productos asociados
+        if ($warehouse->products()->exists()) {
+            // Si tiene productos, redirigir con un mensaje de error
+            return redirect()->route('warehouse.index')
+                             ->with('error', 'No se puede eliminar el almacén "'.$warehouse->Name.'" porque tiene productos asociados.');
+        }
+
+        // Si no tiene productos, proceder con la eliminación
         $warehouse->delete();
-        return redirect()->route('warehouse.index')->with('success',);
+        return redirect()->route('warehouse.index')
+                         ->with('success', 'Almacén "'.$warehouse->Name.'" eliminado exitosamente.');
     }
 }
