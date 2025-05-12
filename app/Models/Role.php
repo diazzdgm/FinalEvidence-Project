@@ -17,10 +17,9 @@ class Role extends Model
     /**
      * The users that belong to the role.
      */
-    // public function users()
-    // {
-    //     // Asumiendo una tabla pivote 'role_user' y claves foráneas convencionales
-    //     // Comentado temporalmente ya que la tabla pivote 'role_user' no existe
-    //     // return $this->belongsToMany(User::class);
-    // }
+    public function users()
+    {
+        // Asumiendo una tabla pivote 'role_user' y claves foráneas convencionales
+        return $this->belongsToMany(User::class);
+    }
 }

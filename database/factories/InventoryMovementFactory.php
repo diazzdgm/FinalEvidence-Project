@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Product; // Importar Product
+use App\Models\User;    // Importar User
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,11 +18,16 @@ class InventoryMovementFactory extends Factory
      */
     public function definition(): array
     {
+        $productIds = Product::pluck('id')->toArray();
+        $userIds = User::pluck('id')->toArray();
+
+        $movementTypes = ['Entrada', 'Salida', 'Ajuste Positivo', 'Ajuste Negativo', 'Transferencia Entrada', 'Transferencia Salida', 'Devolución'];
+
         return [
-        'Product_ID' => fake() -> numberBetween(1,30),
-        'Movement_Type' =>  fake() -> text(50),
-        'Quantity' => fake() -> numberBetween(0,999),
-        'User_ID' => fake() -> numberBetween(1,2),
+            'Product_ID' => !empty($productIds) ? fake()->randomElement($productIds) : Product::factory(),
+            'Movement_Type' =>  fake()->randomElement($movementTypes),
+            'Quantity' => fake()->numberBetween(1, 100), // Cantidades más realistas para movimientos individuales
+            'User_ID' => !empty($userIds) ? fake()->randomElement($userIds) : User::factory(),
         ];
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Customer; // Importar Customer
+use App\Models\User;    // Importar User
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,10 +18,17 @@ class OrderFactory extends Factory
      */
     public function definition(): array
     {
+        $userIds = User::pluck('id')->toArray();
+        $customerIds = Customer::pluck('id')->toArray();
+
+        $statuses = ['Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled', 'Refunded'];
+
         return [
-        'Status' =>  fake() -> text(50),
-        'User_ID' => fake() -> numberBetween(1,2),
-        'Customer_ID' => fake() -> numberBetween(1,15),
+            'Status' => fake()->randomElement($statuses),
+            'User_ID' => !empty($userIds) ? fake()->randomElement($userIds) : User::factory(),
+            'Customer_ID' => !empty($customerIds) ? fake()->randomElement($customerIds) : Customer::factory(),
+            // Corregido para coincidir con el nombre de la columna en la migración
+            'label_path' => null, 
         ];
     }
 }

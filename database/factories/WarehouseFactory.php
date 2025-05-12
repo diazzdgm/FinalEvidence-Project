@@ -16,8 +16,15 @@ class WarehouseFactory extends Factory
      */
     public function definition(): array
     {
+        // Generar nombres que suenen más a almacenes o centros de distribución
+        $warehouseName = fake()->unique()->randomElement([
+            'Almacén Central', 'Centro de Distribución Norte', 'Bodega Principal Sureste', 
+            'Almacén ' . fake()->citySuffix . ' ' . fake()->streetName, 
+            'Logística ' . fake()->lastName,
+            'Depósito ' . fake()->colorName,
+        ]);
         return [
-            'Name' =>  fake() -> company(),  
+            'Name' =>  $warehouseName,  
         ];
     }
 }

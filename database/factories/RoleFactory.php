@@ -16,9 +16,14 @@ class RoleFactory extends Factory
      */
     public function definition(): array
     {
+        // Usar unique() para evitar nombres de roles duplicados si se crean muchos
+        // y randomElement para seleccionar de una lista predefinida.
+        // Para asegurar que siempre tengamos 'Admin' y 'User', los crearemos explícitamente en el Seeder.
+        // Esta factory puede usarse para crear otros roles adicionales si es necesario.
+        $roleName = fake()->unique()->randomElement(['Editor', 'Viewer', 'Support', 'Manager', 'Contributor']);
         return [
-        'Name' => fake() -> name,
-        'Description' =>  fake() -> text(50)
+            'Name' => $roleName,
+            'Description' => fake()->sentence(rand(5,10)) // Descripción un poco más larga
         ];
     }
 }
