@@ -1,0 +1,116 @@
+/* public/css/dashboard.css - More Interactive Enhancements & Button Styles */
+
+/* Dashboard specific container styling */
+.dashboard-container .dashboard-card {
+    background-color: #ffffff;
+    border: none;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+    border-radius: 0.375rem; /* rounded-md */
+}
+
+/* Dark mode for dashboard card */
+.dark .dashboard-container .dashboard-card {
+    background-color: #1a202c;
+    border-color: #2d3748;
+}
+
+/* Dashboard section headings - with a green accent */
+.dashboard-heading {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #16a34a; /* Green accent */
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.075em;
+    padding-left: 0.25rem;
+}
+
+/* Dark mode considerations for dashboard headings */
+.dark .dashboard-heading {
+    color: #4ade80; /* Lighter green for dark mode */
+}
+
+/* Styling for links within the dashboard lists */
+.dashboard-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dashboard-links li {
+    margin: 0;
+}
+
+.dashboard-links li a {
+    display: block;
+    padding: 0.5rem 0.75rem; /* Slightly more padding for a better click target */
+    border-radius: 0.375rem; /* rounded-md for a softer look */
+    transition: all 0.2s ease-in-out; /* Smooth transition for all properties */
+    color: #4a5568;
+    font-size: 0.875rem;
+    text-decoration: none;
+    position: relative; /* For potential pseudo-elements or advanced hover */
+}
+
+.dashboard-links li a:hover {
+    background-color: #f0fdf4; /* Very light green on hover (Tailwind's green-50) */
+    color: #14532d; /* Darker green text on hover (Tailwind's green-900) */
+    transform: translateY(-2px) scale(1.01); /* Slight lift and scale effect */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* Subtle shadow on hover for depth */
+}
+
+.dark .dashboard-links li a {
+    color: #a0aec0;
+}
+
+.dark .dashboard-links li a:hover {
+    background-color: #1c3a2e; /* Darker, muted green for dark hover */
+    color: #dcfce7; /* Light green text for dark hover */
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Active link style - using a green accent */
+.dashboard-links li a.active {
+    background-color: #dcfce7; /* Light green (Tailwind's green-100) */
+    color: #15803d; /* Darker green text (Tailwind's green-700) */
+    font-weight: 600;
+    transform: scale(1.02); /* Slightly more prominent active state */
+}
+
+.dark .dashboard-links li a.active {
+    background-color: #166534; /* Darker green for dark mode active bg */
+    color: #bbf7d0; /* Lighter green text for dark mode active */
+}
+
+/* Primary Button Styles */
+.btn-primary {
+    display: inline-block;
+    padding: 0.625rem 1.25rem; /* 10px 20px */
+    font-size: 0.875rem; /* 14px */
+    font-weight: 500; /* medium */
+    color: #ffffff;
+    background-color: #2563eb; /* Tailwind blue-600 */
+    border: none;
+    border-radius: 0.375rem; /* rounded-md */
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease; /* Transición suave para todas las propiedades */
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8; /* Tailwind blue-700 (slightly darker) */
+    transform: translateY(-2px); /* Mover sutilmente hacia arriba */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra un poco más pronunciada */
+}
+
+/* Dark mode for primary button (optional, if needed) */
+.dark .btn-primary {
+    background-color: #3b82f6; /* Tailwind blue-500 for dark mode */
+}
+
+.dark .btn-primary:hover {
+    background-color: #2563eb; /* Tailwind blue-600 for dark mode hover */
+}
